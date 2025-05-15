@@ -115,7 +115,64 @@ pip install -r requirements.txt
 python app.py
 ```
 
+
+# Hangman Game API (More to be added)
+
+## List of Routes:
+
+### 1. Puzzle Routes (`/puzzle`):
+
+- **`GET /puzzle/start`**  
+  Starts a new puzzle session with default difficulty.  
+  **Returns**: `session_id` and `status`.
+
+- **`POST /puzzle_diff/<session_id>/set_difficulty`**  
+  Sets difficulty based on user age.  
+  **Request Body**: 
+  ```json
+  { "age": <user_age> }
+````
+
+**Returns**: Updated session with the difficulty.
+
+* **`GET /puzzle_session/<session_id>`**
+  Fetches the current puzzle for the session.
+  **Returns**: Current puzzle, difficulty, and status.
+
+* **`POST /puzzle_solve/<session_id>/solve`**
+  Solves the current puzzle and moves to the next puzzle.
+  **Request Body**:
+
+  ```json
+  { "solved": <True/False> }
+  ```
+
+  **Returns**: Revealed letters if correct, failure message if incorrect.
+
 ---
+
+### 2. Session Routes (`/session`):
+
+* **`POST /session/start`**
+  Starts a new session with a given difficulty.
+  **Request Body**:
+
+  ```json
+  { "difficulty": <easy/medium/hard> }
+  ```
+
+  **Returns**: `session_id` for the newly created session.
+
+* **`GET /session_status/<session_id>`**
+  Fetches the current status of the session.
+  **Returns**: Current session state, including puzzle progress.
+
+* **`POST /session_reset/<session_id>`**
+  Resets a session, clearing its current progress.
+  **Returns**: Confirmation message or error if session not found.
+
+
+
 
 ## 📌 Notes
 

@@ -1,23 +1,45 @@
 import random
 
-def load_words_from_file(file_path):
-    with open(file_path, 'r') as file:
-        return [line.strip() for line in file.readlines()]
-
-# Paths to word files
 EASY_MEDIUM_WORDS_PATH = r'D:\HANGMAN_GAME\Hangman_Backend\database\words_alpha.txt'
 HARD_WORDS_PATH = r'D:\HANGMAN_GAME\Hangman_Backend\database\words.txt'
 
+def load_words(path):
+    with open(path, 'r') as file:
+        words = [line.strip() for line in file if line.strip().isalpha()]
+    return words
 
-# Load words from the files
-easy_medium_words = load_words_from_file(EASY_MEDIUM_WORDS_PATH)
-hard_words = load_words_from_file(HARD_WORDS_PATH)
+def select_random_word(difficulty='medium'):
+    if difficulty.lower() in ['easy', 'medium']:
+        word_list = load_words(EASY_MEDIUM_WORDS_PATH)
+    else:
+        word_list = load_words(HARD_WORDS_PATH)
 
-def select_random_word(difficulty):
-    """Select a word based on the difficulty level."""
-    if difficulty == 'hard':
-        return random.choice(hard_words)
-        print(hard_words)
-    else:  # default to easy/medium
-        return random.choice(easy_medium_words)
-        print(easy_medium_words)
+    if not word_list:
+        raise ValueError("Word list is empty or file not found.")
+
+    selected_word = random.choice(word_list).lower()
+    return selected_word
+
+def load_words(path):
+    try:
+        with open(path, 'r') as file:
+            return [line.strip() for line in file if line.strip().isalpha()]
+    except FileNotFoundError:
+        print(f"Warning: File at {path} not found.")
+        return []
+
+DEFAULT_WORDS = ['default', 'hangman', 'puzzle']
+
+def select_random_word(difficulty='medium'):
+    if difficulty.lower() in ['easy', 'medium']:
+        word_list = load_words(EASY_MEDIUM_WORDS_PATH)
+    else:
+        word_list = load_words(HARD_WORDS_PATH)
+
+    if not word_list:
+        word_list = DEFAULT_WORDS
+        print("Warning: Falling back to default word list.")
+
+    return random.choice(word_list).lower()
+
+
