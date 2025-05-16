@@ -194,11 +194,4 @@ Clone, fork, suggest puzzle types, or propose AI models for adaptive gameplay. C
 
 ```
 
----
 
-Would you like to start by:
-- Coding the `app.py` and base routes, or
-- Setting up the `game_engine.py` with word selection and session logic?
-
-Let’s build it step by step.
-```
