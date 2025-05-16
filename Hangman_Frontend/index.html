@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form id="testForm">
+  Difficulty: <input type="text" name="difficulty" value="easy" />
+  <button type="submit">Send POST</button>
+</form>
+
+<script>
+document.getElementById('testForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const difficulty = this.difficulty.value;
+
+  fetch('http://localhost:5000/session/start', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ difficulty })
+  })
+  .then(response => response.json())
+  .then(data => alert('Response: ' + JSON.stringify(data)))
+  .catch(error => alert('Error: ' + error));
+});
+</script>
+
+</body>
+</html>

@@ -1,70 +1,117 @@
 import uuid
+from utils.db import get_db_connection
 from utils.word_selector import select_random_word
 
-# In-memory session storage
-sessions = {}
 
-def create_session(difficulty='medium'):
+def create_session(age, difficulty):
     session_id = str(uuid.uuid4())
     word = select_random_word(difficulty)
 
-    sessions[session_id] = {
-        'difficulty': difficulty,
-        'word': word,
-        'revealed_letters': [],
-        'puzzles_completed': 0,
-        'current_letter_index': 0,
-        'failed': False
-    }
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+                   INSERT INTO sessions (session_id, age, difficulty, word, current_letter_index, revealed_letters)
+                   VALUES (%s, %s, %s, %s, %s, %s)
+                   """, (session_id, age, difficulty, word, 0, ''))
+
+    cursor.execute("""
+                   INSERT INTO performance (session_id)
+                   VALUES (%s)
+                   """, (session_id,))
+
+    conn.commit()
+    conn.close()
     return session_id
 
+
 def get_session(session_id):
-    return sessions.get(session_id, None)
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM sessions WHERE session_id = %s", (session_id,))
+    session = cursor.fetchone()
+    conn.close()
+    return session
+
 
 def update_session(session_id, key, value):
-    if session_id in sessions:
-        sessions[session_id][key] = value
-        return True
-    return False
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    query = f"UPDATE sessions SET {key} = %s WHERE session_id = %s"
+    cursor.execute(query, (value, session_id))
+
+    conn.commit()
+    conn.close()
+    return True
+
 
 def reset_session(session_id):
-    if session_id in sessions:
-        word = get_word(sessions[session_id]['difficulty'])
-        sessions[session_id]['word'] = word
-        sessions[session_id]['revealed_letters'] = []
-        sessions[session_id]['current_letter_index'] = 0
-        sessions[session_id]['puzzles_completed'] = 0
-        sessions[session_id]['failed'] = False
-        return True
-    return False
+    word = select_random_word('easy')  # Or use current session's difficulty
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+                   UPDATE sessions
+                   SET word                 = %s,
+                       revealed_letters     = '',
+                       current_letter_index = 0,
+                       failed               = FALSE
+                   WHERE session_id = %s
+                   """, (word, session_id))
+
+    conn.commit()
+    conn.close()
+    return True
+
 
 def delete_session(session_id):
-    return sessions.pop(session_id, None)
+    conn = get_db_connection()
+    cursor = conn.cursor()
 
-# Utility: Reveal next letter
+    cursor.execute("DELETE FROM performance WHERE session_id = %s", (session_id,))
+    cursor.execute("DELETE FROM sessions WHERE session_id = %s", (session_id,))
+
+    conn.commit()
+    conn.close()
+    return True
+
+
 def reveal_next_letter(session_id):
     session = get_session(session_id)
     if not session:
         return None
+
     index = session['current_letter_index']
     if index >= len(session['word']):
         return None
+
     letter = session['word'][index]
-    session['revealed_letters'].append(letter)
-    session['current_letter_index'] += 1
-    session['puzzles_completed'] += 1
+    revealed = session['revealed_letters'] + letter
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+                   UPDATE sessions
+                   SET revealed_letters     = %s,
+                       current_letter_index = %s
+                   WHERE session_id = %s
+                   """, (revealed, index + 1, session_id))
+
+    conn.commit()
+    conn.close()
     return letter
 
-# Utility: Check if game is complete
+
 def is_game_complete(session_id):
     session = get_session(session_id)
     if not session:
         return False
     return session['current_letter_index'] >= len(session['word'])
 
-# Utility: Change difficulty dynamically
+
 def change_difficulty(session_id, new_difficulty):
-    if session_id in sessions:
-        sessions[session_id]['difficulty'] = new_difficulty
-        return True
-    return False
+    return update_session(session_id, 'difficulty', new_difficulty)

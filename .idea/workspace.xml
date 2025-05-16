@@ -4,30 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d7f6a9d-eb6a-4727-8102-ef22554817f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/HANGMAN_GAME.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/engine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/engine/difficulty_ml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/engine/game_engine.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/engine/puzzle_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/cipher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/maze.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/symbol.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/routes/game_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/routes/puzzle_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/utils/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Hangman_Backend/utils/word_selector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+    <list default="true" id="5d7f6a9d-eb6a-4727-8102-ef22554817f2" name="Changes" comment="COMMIT-02&#10;PHASE-01-Session Key Fetching and checking configured">
+      <change afterPath="$PROJECT_DIR$/Hangman_Backend/models/difficulty_predictor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman_Backend/routes/solve_routes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman_Backend/utils/db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman_Backend/utils/performance_manager.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman_Frontend/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Hangman_Frontend/script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/HANGMAN_GAME.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/HANGMAN_GAME.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/engine/puzzle_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/engine/puzzle_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/puzzles/cipher.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/cipher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/puzzles/maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/maze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/puzzles/symbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/puzzles/symbol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/engine/solve_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/routes/game_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/routes/game_routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Hangman_Backend/utils/session_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_Backend/utils/session_manager.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,26 +32,32 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2x5SMSaze1Mo93eFQoSsVwGqc6k" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
     "Python.app.executor": "Run",
+    "Python.word_selector.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/HANGMAN_GAME",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -66,11 +66,16 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\HANGMAN_GAME" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.25659.43" />
-        <option value="bundled-python-sdk-181015f7ab06-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.25659.43" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-PY-251.25410.159" />
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
       </set>
     </attachedChunks>
   </component>
@@ -82,14 +87,58 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1747226392724</updated>
-      <workItem from="1747226393942" duration="1520000" />
+      <workItem from="1747226393942" duration="6647000" />
+      <workItem from="1747397604658" duration="1044000" />
+      <workItem from="1747410446964" duration="2130000" />
     </task>
+    <task id="LOCAL-00001" summary="COMMIT-01&#10;Flask app boilerplate&#10;Game state engine&#10;Word selector">
+      <option name="closed" value="true" />
+      <created>1747228034206</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747228034206</updated>
+    </task>
+    <task id="LOCAL-00002" summary="COMMIT-01&#10;PHASE-01-Session Key Fetching and checking configured">
+      <option name="closed" value="true" />
+      <created>1747311311090</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1747311311090</updated>
+    </task>
+    <task id="LOCAL-00003" summary="COMMIT-02&#10;PHASE-01-Session Key Fetching and checking configured">
+      <option name="closed" value="true" />
+      <created>1747311323854</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747311323854</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="COMMIT-01&#10;Flask app boilerplate&#10;Game state engine&#10;Word selector" />
+    <MESSAGE value="COMMIT-01&#10;PHASE-01-Session Key Fetching and checking configured" />
+    <MESSAGE value="COMMIT-02&#10;PHASE-01-Session Key Fetching and checking configured" />
+    <option name="LAST_COMMIT_MESSAGE" value="COMMIT-02&#10;PHASE-01-Session Key Fetching and checking configured" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Hangman_Backend/routes/puzzle_routes.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HANGMAN_GAME$app.coverage" NAME="app Coverage Results" MODIFIED="1747227824148" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Hangman_Backend" />
+    <SUITE FILE_PATH="coverage/HANGMAN_GAME$app.coverage" NAME="app Coverage Results" MODIFIED="1747412924708" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Hangman_Backend" />
+    <SUITE FILE_PATH="coverage/HANGMAN_GAME$word_selector.coverage" NAME="word_selector Coverage Results" MODIFIED="1747228873745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Hangman_Backend/utils" />
   </component>
 </project>

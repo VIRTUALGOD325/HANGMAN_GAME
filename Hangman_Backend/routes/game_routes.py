@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from engine.game_engine import GameEngine
+from models.difficulty_predictor import DifficultyPredictor
 
 game_bp = Blueprint('game', __name__)
 
